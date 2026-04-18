@@ -1,40 +1,34 @@
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Axen Empire | Mastery</title>
+    <style>
+        body { background: #000; color: #00ff41; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; overflow: hidden; }
+        .container { border: 1px solid #00ff41; padding: 40px; text-align: center; box-shadow: 0 0 15px #00ff4133; width: 300px; position: relative; }
+        h1 { font-size: 1.2rem; letter-spacing: 8px; margin-bottom: 5px; }
+        input { background: transparent; border: none; border-bottom: 1px solid #00ff41; color: #00ff41; width: 100%; padding: 10px 0; text-align: center; outline: none; margin-top: 20px; }
+        button { background: transparent; border: 1px solid #00ff41; color: #00ff41; padding: 10px; width: 100%; margin-top: 20px; cursor: pointer; text-transform: uppercase; letter-spacing: 2px; }
+        button:hover { background: #00ff41; color: #000; }
+        #data-stream { position: fixed; bottom: 10px; left: 10px; font-size: 0.6rem; color: #008f11; pointer-events: none; }
+    </style>
 </head>
-<body style="background: #000; color: #0f0; font-family: monospace; padding: 30px;">
-    <h1>AXEN EMPIRE: MASTERY TRACKER</h1>
-    
-    <div style="border: 1px solid #0f0; padding: 20px; width: 350px;">
-        <h3>Track Your Study</h3>
-        <input type="number" id="hours" placeholder="Hours spent">
-        <select id="subject">
-            <option value="phys">Physical Chem</option>
-            <option value="org">GOC / Organic</option>
-        </select>
-        <button onclick="logMastery()">Log</button>
-        
-        <p>Physical Chem: <span id="phys-score">0</span> hrs</p>
-        <p>GOC/Organic: <span id="org-score">0</span> hrs</p>
+<body>
+    <div class="container">
+        <h1>AXEN</h1>
+        <p style="font-size: 0.7rem;">SYSTEM // RESTRICTED</p>
+        <form action="YOUR_FORMSPREE_ENDPOINT_HERE" method="POST">
+            <input type="email" name="email" placeholder="ENTER_IDENTITY" required>
+            <button type="submit">REQUEST_ACCESS</button>
+        </form>
     </div>
 
-    <script>
-        // Load data on startup
-        document.getElementById('phys-score').innerText = localStorage.getItem('phys') || 0;
-        document.getElementById('org-score').innerText = localStorage.getItem('org') || 0;
+    <div id="data-stream"></div>
 
-        function logMastery() {
-            let hours = parseInt(document.getElementById('hours').value);
-            let subject = document.getElementById('subject').value;
-            
-            let current = parseInt(localStorage.getItem(subject) || 0);
-            let newTotal = current + hours;
-            
-            localStorage.setItem(subject, newTotal);
-            document.getElementById(subject + '-score').innerText = newTotal;
-        }
+    <script>
+        const stream = document.getElementById('data-stream');
+        const logs = ["INIT_CORE...", "ENCRYPTING...", "SYNC_DATA_99%", "HUB_ACTIVE", "SCANNING_NODE...", "READY"];
+        setInterval(() => {
+            stream.innerText = "STREAM: " + logs[Math.floor(Math.random() * logs.length)];
+        }, 2000);
     </script>
 </body>
 </html>
