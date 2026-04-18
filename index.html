@@ -1,38 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AXEN // CORE</title>
     <style>
-        body { background: #000; color: #444; font-family: 'Courier New', monospace; display: flex; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-        .container { width: 400px; padding: 20px; border: 1px solid #222; }
+        body { background: #000; color: #00ff41; font-family: 'Courier New', monospace; margin: 0; display: flex; justify-content: center; align-items: center; min-height: 100vh; overflow: hidden; }
+        .app-shell { width: 340px; border: 1px solid #00ff41; padding: 25px; box-shadow: 0 0 20px #00ff4111; }
+        .header { font-size: 0.5rem; letter-spacing: 3px; border-bottom: 1px solid #111; padding-bottom: 10px; margin-bottom: 20px; text-transform: uppercase; }
+        .log { font-size: 0.6rem; color: #fff; height: 150px; margin-bottom: 20px; overflow-y: auto; border: 1px solid #222; padding: 10px; background: #050505; }
         
-        /* Layer Headers */
-        .layer-header { font-size: 0.5rem; letter-spacing: 5px; color: #00ff41; margin-bottom: 20px; }
-        h1 { font-size: 2rem; color: #fff; margin: 0; }
-        
-        .layer-content { margin-top: 40px; }
-        input { background: transparent; border: none; border-bottom: 1px solid #222; color: #fff; width: 100%; padding: 10px 0; outline: none; }
-        button { background: transparent; border: 1px solid #444; color: #444; padding: 10px 20px; margin-top: 20px; cursor: pointer; transition: 0.5s; }
-        button:hover { border-color: #00ff41; color: #00ff41; }
+        .mode-ui { display: flex; gap: 5px; margin-bottom: 10px; }
+        .mode-btn { flex: 1; font-size: 0.5rem; padding: 5px; cursor: pointer; border: 1px solid #00ff41; background: #000; color: #00ff41; }
+        .mode-btn.active { background: #00ff41; color: #000; }
+
+        input { background: #000; border: 1px solid #222; color: #00ff41; width: 100%; padding: 12px; box-sizing: border-box; outline: none; margin-bottom: 10px; }
+        button.execute { background: transparent; border: 1px solid #00ff41; color: #00ff41; padding: 12px; width: 100%; cursor: pointer; text-transform: uppercase; font-size: 0.6rem; letter-spacing: 2px; }
+        button.execute:hover { background: #00ff41; color: #000; }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="layer-header">LAYER_01: AUTHENTICATION // LAYER_02: INTEGRATION</div>
-        <h1>AXEN</h1>
-        
-        <div class="layer-content">
-            <form action="https://formspree.io/f/mvzdanok" method="POST">
-                <input type="hidden" name="_next" value="https://axen-cb7f.vercel.app">
-                
-                <label style="font-size: 0.6rem;">// ORIGIN_IDENTITY</label>
-                <input type="email" name="email" required>
-                
-                <label style="display:block; margin-top:20px; font-size: 0.6rem;">// ACCESS_PROTOCOL</label>
-                <input type="text" name="protocol" placeholder="LEVEL_01_CLEARANCE" required>
-                
-                <button type="submit">INIT_SYNCHRONIZATION</button>
-            </form>
+
+    <div class="app-shell">
+        <div class="header">AXEN_OS // DUAL_AI_NETWORK</div>
+        <div class="log" id="log">
+            > SYSTEM_INIT_COMPLETE.<br>
+            > DUAL_AI_SYNC: ACTIVE.
         </div>
+        
+        <div class="mode-ui">
+            <button class="mode-btn active" id="vault-btn" onclick="setMode('VAULT')">INTERNAL_VAULT</button>
+            <button class="mode-btn" id="net-btn" onclick="setMode('NETWORK')">INVESTOR_BROADCAST</button>
+        </div>
+
+        <form id="axenForm" action="https://formspree.io/f/mvzdanok" method="POST">
+            <input type="text" name="command" id="cmdInput" placeholder="EXECUTE_COMMAND" required>
+            <button type="submit" class="execute" id="btn">COMMIT_TO_EMPIRE</button>
+        </form>
     </div>
+
+    <script>
+        let currentMode = 'VAULT';
+        const form = document.getElementById('axenForm');
+        const log = document.getElementById('log');
+        const cmdInput = document.getElementById('cmdInput');
+
+        function setMode(mode) {
+            currentMode = mode;
+            document.getElementById('vault-btn').classList.toggle('active', mode === 'VAULT');
+            document.getElementById('net-btn').classList.toggle('active', mode === 'NETWORK');
+        }
+
+        form.addEventListener('submit', () => {
+            const entry = document.createElement('div');
+            entry.innerText = `> [${currentMode}] ` + cmdInput.value;
+            log.prepend(entry);
+        });
+    </script>
 </body>
 </html>
