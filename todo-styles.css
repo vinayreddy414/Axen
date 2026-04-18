@@ -1,0 +1,46 @@
+.todo {
+    background-color: #0E0E0E; /* Matrix Green Aesthetic */
+    color: #00FF00;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 10px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+    transition: all 0.3s ease;
+}
+
+.todo:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.7);
+}
+
+.priority-high {
+    border-left: 5px solid #FF0000; /* Red for high priority */
+}
+
+.priority-medium {
+    border-left: 5px solid #FFA500; /* Orange for medium priority */
+}
+
+.priority-low {
+    border-left: 5px solid #00FF00; /* Green for low priority */
+}
+
+@media (max-width: 600px) {
+    .todo {
+        font-size: 14px;
+        padding: 5px;
+    }
+}
+
+/* Mission Vault Styling */
+.mission-vault {
+    background-color: #2C2C2C;
+    color: #FFFFFF;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+}
+
+.mission-vault h2 {
+    color: #00FF00;
+}
