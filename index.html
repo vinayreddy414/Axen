@@ -3,28 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="manifest" href="manifest.json">
-    <title>AXEN // EMPIRE_OS</title>
-    <style>
-        body { background: #000; color: #00ff41; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
-        .panel { border: 1px solid #00ff41; padding: 15px; margin-bottom: 20px; }
-        .log { height: 150px; overflow-y: auto; background: #050505; border: 1px solid #222; padding: 10px; font-size: 0.6rem; margin-bottom: 10px; }
-        input, button { width: 100%; padding: 10px; background: #000; border: 1px solid #00ff41; color: #00ff41; margin-bottom: 5px; text-transform: uppercase; }
-    </style>
+    <link rel="stylesheet" href="styles.css">
+    <title>AXEN Empire</title>
+    <script src="app.js" defer></script>
 </head>
 <body>
-    <div class="panel">
-        <h3>COMMAND_CENTER</h3>
-        <div class="log" id="log">> SYSTEM_ONLINE. DUAL_AI_SYNCED.</div>
-        <input type="text" id="in" placeholder="EXECUTE_PROTOCOL">
-        <button onclick="commit()">COMMIT_TO_VAULT</button>
+    <header>
+        <h1>Welcome to AXEN Empire</h1>
+    </header>
+    <div id="command-center">
+        <h2>Command Center</h2>
+        <!-- command center content -->
     </div>
-    <script>
-        function commit() {
-            const val = document.getElementById('in').value;
-            document.getElementById('log').innerHTML += '<br>> ' + val;
-            document.getElementById('in').value = '';
-        }
-    </script>
+    <div id="ai-dashboard">
+        <h2>Dual-Core AI Dashboard</h2>
+        <!-- AI dashboard content -->
+    </div>
+    <div id="system-metrics">
+        <h2>System Metrics</h2>
+        <!-- system metrics content -->
+    </div>
+    <div id="asset-vault">
+        <h2>Digital Asset Vault</h2>
+        <!-- asset vault content -->
+    </div>
+    <div id="network-activity">
+        <h2>Network Activity Feed</h2>
+        <!-- network activity feed content -->
+    </div>
+    <footer>
+        <p>&copy; 2026 AXEN Empire</p>
+    </footer>
 </body>
 </html>
