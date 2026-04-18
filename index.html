@@ -1,24 +1,39 @@
+
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Axen Empire | Dashboard</title>
+    <title>Axen Empire | Mastery</title>
 </head>
-<body style="background: #000; color: #0f0; font-family: monospace; padding: 50px;">
-    <h1>AXEN EMPIRE: DASHBOARD</h1>
-    <p>Status: OPERATIONAL</p>
+<body style="background: #000; color: #0f0; font-family: monospace; padding: 30px;">
+    <h1>AXEN EMPIRE: MASTERY TRACKER</h1>
     
-    <div style="border: 1px solid #0f0; padding: 20px; width: 300px;">
-        <h3>Log Daily Hustle</h3>
-        <input type="number" id="hours" placeholder="Hours studied/coded">
-        <button onclick="updateMomentum()">Update</button>
-        <p id="momentum">Momentum: 0</p>
+    <div style="border: 1px solid #0f0; padding: 20px; width: 350px;">
+        <h3>Track Your Study</h3>
+        <input type="number" id="hours" placeholder="Hours spent">
+        <select id="subject">
+            <option value="phys">Physical Chem</option>
+            <option value="org">GOC / Organic</option>
+        </select>
+        <button onclick="logMastery()">Log</button>
+        
+        <p>Physical Chem: <span id="phys-score">0</span> hrs</p>
+        <p>GOC/Organic: <span id="org-score">0</span> hrs</p>
     </div>
 
     <script>
-        function updateMomentum() {
-            let hours = document.getElementById('hours').value;
-            let momentum = hours * 10;
-            document.getElementById('momentum').innerText = "Momentum: " + momentum;
+        // Load data on startup
+        document.getElementById('phys-score').innerText = localStorage.getItem('phys') || 0;
+        document.getElementById('org-score').innerText = localStorage.getItem('org') || 0;
+
+        function logMastery() {
+            let hours = parseInt(document.getElementById('hours').value);
+            let subject = document.getElementById('subject').value;
+            
+            let current = parseInt(localStorage.getItem(subject) || 0);
+            let newTotal = current + hours;
+            
+            localStorage.setItem(subject, newTotal);
+            document.getElementById(subject + '-score').innerText = newTotal;
         }
     </script>
 </body>
