@@ -1,15 +1,25 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Axen Empire | Genesis</title>
+    <title>Axen Empire | Dashboard</title>
 </head>
 <body style="background: #000; color: #0f0; font-family: monospace; padding: 50px;">
-    <h1>AXEN EMPIRE</h1>
+    <h1>AXEN EMPIRE: DASHBOARD</h1>
     <p>Status: OPERATIONAL</p>
-    <div id="momentum">Momentum Level: CALCULATING...</div>
-    <script src="AxenOS.js"></script>
+    
+    <div style="border: 1px solid #0f0; padding: 20px; width: 300px;">
+        <h3>Log Daily Hustle</h3>
+        <input type="number" id="hours" placeholder="Hours studied/coded">
+        <button onclick="updateMomentum()">Update</button>
+        <p id="momentum">Momentum: 0</p>
+    </div>
+
     <script>
-        document.getElementById('momentum').innerText = "Momentum Level: 100 - ELITE_BUILDER";
+        function updateMomentum() {
+            let hours = document.getElementById('hours').value;
+            let momentum = hours * 10;
+            document.getElementById('momentum').innerText = "Momentum: " + momentum;
+        }
     </script>
 </body>
 </html>
