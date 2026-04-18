@@ -1,42 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AXEN // COMMAND_CENTER</title>
+    <link rel="manifest" href="manifest.json">
+    <title>AXEN // EMPIRE_OS</title>
     <style>
-        body { background: #050505; color: #00ff41; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
-        .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 800px; margin: auto; }
-        .panel { border: 1px solid #00ff41; padding: 15px; background: #000; }
-        h3 { font-size: 0.7rem; border-bottom: 1px solid #222; padding-bottom: 5px; text-transform: uppercase; }
-        .log-area { font-size: 0.6rem; color: #fff; height: 200px; overflow-y: auto; background: #0a0a0a; padding: 10px; margin: 10px 0; }
-        input, button { width: 100%; padding: 10px; background: #000; border: 1px solid #00ff41; color: #00ff41; margin-bottom: 5px; }
+        body { background: #000; color: #00ff41; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
+        .panel { border: 1px solid #00ff41; padding: 15px; margin-bottom: 20px; }
+        .log { height: 150px; overflow-y: auto; background: #050505; border: 1px solid #222; padding: 10px; font-size: 0.6rem; margin-bottom: 10px; }
+        input, button { width: 100%; padding: 10px; background: #000; border: 1px solid #00ff41; color: #00ff41; margin-bottom: 5px; text-transform: uppercase; }
     </style>
 </head>
 <body>
-    <div class="grid">
-        <div class="panel">
-            <h3>COMMAND_CENTER</h3>
-            <div class="log-area" id="commandLog">> SYSTEM_READY</div>
-            <input type="text" id="cmd" placeholder="EXECUTE_PROTOCOL">
-            <button onclick="execute()">COMMIT_ACTION</button>
-        </div>
-        <div class="panel">
-            <h3>COMMUNITY_BROADCAST</h3>
-            <div class="log-area" id="commLog">> NETWORK_IDLE</div>
-            <input type="text" id="msg" placeholder="BROADCAST_MESSAGE">
-            <button onclick="broadcast()">TRANSMIT_TO_NETWORK</button>
-        </div>
+    <div class="panel">
+        <h3>COMMAND_CENTER</h3>
+        <div class="log" id="log">> SYSTEM_ONLINE. DUAL_AI_SYNCED.</div>
+        <input type="text" id="in" placeholder="EXECUTE_PROTOCOL">
+        <button onclick="commit()">COMMIT_TO_VAULT</button>
     </div>
-
     <script>
-        function execute() {
-            const val = document.getElementById('cmd').value;
-            document.getElementById('commandLog').prepend(document.createElement('div').innerText = '> [CORE]: ' + val);
-            // Logic for Dual AI goes here
-        }
-        function broadcast() {
-            const msg = document.getElementById('msg').value;
-            document.getElementById('commLog').prepend(document.createElement('div').innerText = '> [COMM]: ' + msg);
+        function commit() {
+            const val = document.getElementById('in').value;
+            document.getElementById('log').innerHTML += '<br>> ' + val;
+            document.getElementById('in').value = '';
         }
     </script>
 </body>
